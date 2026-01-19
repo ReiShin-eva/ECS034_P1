@@ -16,7 +16,7 @@ std::string Center(const std::string &str, int width, char fill = ' ');
 std::string LJust(const std::string &str, int width, char fill = ' ');
 std::string RJust(const std::string &str, int width, char fill = ' ');
 
-std:string Replace(const std::string &str, const std::string &old, const std:string &rep);
+std::string Replace(const std::string &str, const std::string &old, const std::string &rep);
 
 std::vector<std::string> Split(const std:string &str, const std::string &splt = "");
 
