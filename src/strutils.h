@@ -12,9 +12,9 @@ std::string LStrip(const std::string &str);
 std::string RStrip(const std::string &str);
 std::string Strip(const std::string &str);
 
-std::string Center(const std::string &str, int width, char fill ' ');
-std::string LJust(const std::string &str, int width, char fill ' ');
-std::string RJust(const std::string &str, int width, char fill ' ');
+std::string Center(const std::string &str, int width, char fill = ' ');
+std::string LJust(const std::string &str, int width, char fill = ' ');
+std::string RJust(const std::string &str, int width, char fill = ' ');
 
 std:string Replace(const std::string &str, const std::string &old, const std:string &rep);
 
