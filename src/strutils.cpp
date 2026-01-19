@@ -6,7 +6,7 @@
 //Slice Function
 std::string Slice(const std::string &str, ssize_t start, ssize_t end=0){
   std::string out;
-  for(size_t i = 0; i < (str.size() - end); ++i){
+  for(int i = 0; i < (str.size() - end); ++i){
     if(i >= start){
       out = out + str[i];
     } else {
