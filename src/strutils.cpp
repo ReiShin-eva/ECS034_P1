@@ -158,42 +158,42 @@ std::string Replace(const std::string &str, const std::string &old, const std::s
 	std::string counter;
 	for(int i = 0; i < str.size(); i++){
 		for(int j = 0; j < old.size(); j++){
+			if((i + j) >= str.size()){break;}
 			counter = counter + str[i + j];
 		}
 		if(counter == old){
-			counter = rep;
-			out = out + counter;
+			out = out + rep;
+			
 		} else{ out = out + str[i]; }
+		counter = "";
 	}
   return out;
 }
 
 //Split Function
 std::vector<std::string> Split(const std::string &str, const std::string &splt = "") {
-    std::vector<std::string> out;
-    if (splt.empty()) {
-        int i = 0;
-        while (i < str.length()) {
-            while (i < str.length() && (str[i] == ' ' || str[i] == '\t' || str[i] == '\n'))
-                ++i;
-            if (i >= str.length()){ break; }
-            int j = i;
-            while (j < str.length() && str[j] != ' ' && str[j] != '\t' && str[j] != '\n')
-                ++j;
-
-            out.push_back(str.substr(i, j - i));
-            i = j;
-        }
-    } else {
-        int pos = 0;
-        int prev = 0;
-        while ((pos = str.find(splt, prev)) != std::string::npos) {
-            out.push_back(str.substr(prev, pos - prev));
-            prev = pos + splt.length();
-        }
-        out.push_back(str.substr(prev));
-    }
-    return out;
+	std::string look;
+	if(splt == ""){ look = " "; } else{ look = splt; }
+	int count = 1;
+	std::vector<int> idx;
+	std::string counter;	
+	for(int i = 0; i  < str.size(); i++){
+		counter = "";
+		for(int j = 0; j < look.size(); j++){
+			if((i + j) >= str.size()){break;}
+			counter = counter + str[i + j];
+		}
+		if(counter == look){ count++; idx.push_back(i); } else{ continue; }
+		counter = "";
+	}
+	std::vector<std::string> out(count);
+	int start = 0;
+	for(int i = 0; i < idx.size(); i++){
+		out[i] = str.substr(start, idx[i] - start);
+		start = idx[i] + look.size();
+	}
+	out[count - 1] = str.substr(start);
+	return out;
 }
 
 //Join Function
@@ -220,9 +220,6 @@ std::string ExpandTabs(const std::string &str, int tabsize = 4) {
         } else {
           out += str[i];
           col++;
-          if (str[i] == '\n' || str[i] == '\r') {
-            col = 0;  
-          }
         }
     }
     return out;
