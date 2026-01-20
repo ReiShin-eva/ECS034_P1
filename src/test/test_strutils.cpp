@@ -106,8 +106,8 @@ TEST(StringUtilsTest, ExpandTabs) {
 TEST(StringUtilsTest, EditDistance) {
     EXPECT_EQ(EditDistance("kitten", "sitting"), 3);
     EXPECT_EQ(EditDistance("saturday", "sunday"), 3);
-    EXPECT_EQ(EditDistance("abc", "ABC", true), 0);   // ignore case
-    EXPECT_EQ(EditDistance("abc", "ABC", false), 3);  // case matters
+    EXPECT_EQ(EditDistance("abc", "ABC", true), 0);   
+    EXPECT_EQ(EditDistance("abc", "ABC", false), 3);  
     EXPECT_EQ(EditDistance("", "abc"), 3);
     EXPECT_EQ(EditDistance("abc", ""), 3);
     EXPECT_EQ(EditDistance("", ""), 0);
